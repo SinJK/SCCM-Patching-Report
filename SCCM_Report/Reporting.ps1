@@ -49,12 +49,6 @@ foreach($deployment in $deployments){
 
             } 
 
-  
-
-  
-
-  
-
     $status | Group-Object -Property Statustype -NoElement | Out-PieChart -PieChartTitle "Status" -Pie3D -ChartWidth 400 -ChartHeight 400 -saveImage C:\temp\status_$($deployment.TargetCollectionID).png 
 
   
@@ -107,10 +101,6 @@ foreach($deployment in $deployments){
 
     } 
 
-  
-
-  
-
     $board = [PSCustomObject]@{ 
 
         Success = ($Success |Measure-Object).Count 
@@ -124,10 +114,6 @@ foreach($deployment in $deployments){
         Error = ($ErrorStatus|Measure-Object).Count 
 
     } 
-
-  
-
-  
 
     $board 
     $bodyhtml="" 
