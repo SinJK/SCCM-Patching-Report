@@ -1,8 +1,11 @@
 Import-Module $PSScriptRoot\Out-PieChart.psm1
 & "$PSScriptRoot\ISEConnect.ps1" 
+
+#Define Mail settings
 $sender = ""
 $receiver = ""
 $smtpserver = ""
+######################
 $SCCMSiteCode = New-Object –ComObject “Microsoft.SMS.Client” 
 $day=[datetime]::Today.DayOfWeek 
 $bodypath= "c:\temp\body.txt" 
@@ -20,7 +23,6 @@ if(Test-Path C:\temp\*.png){
     } 
 } 
 
-$collection= Get-CMCollection -Name "*$day*" | select Name,CollectionId 
 $deployments=Get-CMSoftwareUpdateDeployment | where {$_.EnforcementDeadline -eq $($date.ToString("MM/dd/yy"))} 
 
 if(-not $deployments){ 
