@@ -1,8 +1,8 @@
 Import-Module $PSScriptRoot\Out-PieChart.psm1
 & "$PSScriptRoot\ISEConnect.ps1" 
 $sender = ""
-$receiver=""
-$smtpserver=""
+$receiver = ""
+$smtpserver = ""
 $SCCMSiteCode = New-Object –ComObject “Microsoft.SMS.Client” 
 $day=[datetime]::Today.DayOfWeek 
 $bodypath= "c:\temp\body.txt" 
