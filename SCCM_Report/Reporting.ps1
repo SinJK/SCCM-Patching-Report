@@ -1,6 +1,8 @@
 Import-Module $PSScriptRoot\Out-PieChart.psm1
 & "$PSScriptRoot\ISEConnect.ps1" 
-
+$sender = ""
+$receiver=""
+$smtpserver=""
 $SCCMSiteCode = New-Object –ComObject “Microsoft.SMS.Client” 
 $day=[datetime]::Today.DayOfWeek 
 $bodypath= "c:\temp\body.txt" 
@@ -211,7 +213,7 @@ if($html -eq $null){}
 
 else{ 
 
-Send-MailMessage -From * -To * -BodyAsHtml  ($html | out-string ) -Subject "[$($env:COMPUTERNAME)] Deployment of $(get-date -f MM/dd/yyyy)" -Attachments $(gci C:\temp\*status*.png).FullName -SmtpServer * 
+Send-MailMessage -From $sender -To $receiver -BodyAsHtml  ($html | out-string ) -Subject "[$($env:COMPUTERNAME)] Deployment of $(get-date -f MM/dd/yyyy)" -Attachments $(gci C:\temp\*status*.png).FullName -SmtpServer $smtpserver 
 
 } 
 
