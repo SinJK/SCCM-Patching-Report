@@ -1,12 +1,12 @@
 Import-Module $PSScriptRoot\Out-PieChart.psm1
 & "$PSScriptRoot\ISEConnect.ps1" 
-
+$SCCMsitecode = Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\SMS\DP" 
+$SiteCode = $SCCMsitecode.SiteCode 
 #Define Mail settings
 $sender = ""
 $receiver = ""
 $smtpserver = ""
 ######################
-$SCCMSiteCode = New-Object –ComObject “Microsoft.SMS.Client” 
 $day=[datetime]::Today.DayOfWeek 
 $bodypath= "c:\temp\body.txt" 
 $date= get-date
@@ -33,7 +33,7 @@ foreach($deployment in $deployments){
 
 
     $query = @{ 
-        Namespace = "root\SMS\site_$($SCCMSiteCode.GetAssignedSite())" 
+        Namespace = "root\SMS\site_$($SiteCode)" 
         ClassName = 'SMS_SUMDeploymentAssetDetails' 
         Filter = "CollectionId like '$($deployment.TargetCollectionID)'" 
     } 
