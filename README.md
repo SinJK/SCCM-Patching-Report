@@ -4,7 +4,8 @@ Get your patching report directly in your mailbox instead of browser throught yo
 
 ## Requirements
 Powershell version that support **DataVisualization**.  
-Run on a server with **SCCM Module** (recommended to run from SCCM Server)
+Run on a server with **SCCM Module** (recommended to run from SCCM Server)  
+Run the server the same day of the patching as script rely on **EnforcementDeadline**
 
 ## How it works ?:
 1. Clone the repo `git clone https://github.com/SinJK/SCCM-Patching-Report.git`
